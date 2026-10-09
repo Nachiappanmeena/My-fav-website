@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f2f3ee">
+	<title>Campus Desk | Sign in</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root{font-family:"DM Sans",sans-serif;color:#24312e;background:#f2f3ee;font-synthesis:none;text-rendering:optimizeLegibility;--green:#176b56;--green-dark:#10513f;--mint:#e5f1e9;--line:#e1e6df;--muted:#75817c;--paper:#fffefa;--coral:#db785d}
+		*{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:inherit}
+		.login-page{min-height:100vh;display:grid;grid-template-columns:1.02fr .98fr;padding:16px;gap:16px}
+		.visual{min-height:calc(100vh - 32px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,68px);color:#fff;background:#315448 url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=85") center/cover;border-radius:5px;position:relative;isolation:isolate;overflow:hidden}
+		.visual:before{position:absolute;inset:0;z-index:-1;content:"";background:linear-gradient(180deg,rgba(17,39,33,.26),rgba(17,39,33,.03) 42%,rgba(17,39,33,.81))}
+		.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;letter-spacing:.4px}
+		.brand-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--green)}.brand-icon svg{width:21px;height:21px}
+		.visual-copy{max-width:500px;padding:40px 0 20px;animation:rise .5s ease-out both}.kicker{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:9px}.kicker:before{content:"";width:21px;height:2px;background:#efa18a}
+		.visual h1{font:600 clamp(38px,5.4vw,68px)/1.04 Manrope,sans-serif;letter-spacing:0;margin:16px 0}.visual-copy p:last-child{max-width:390px;color:rgba(255,255,255,.84);font-size:15px;line-height:1.7}
+		.visual-foot{display:flex;justify-content:space-between;gap:14px;color:rgba(255,255,255,.8);font-size:11px}
+		.login-area{display:grid;place-items:center;padding:32px clamp(24px,7vw,100px);background-color:var(--paper);background-image:radial-gradient(#dce5db .7px,transparent .7px);background-position:12px 12px;background-size:24px 24px;border-radius:5px}
+		.login-card{width:min(100%,390px);padding:24px 0;background:var(--paper);animation:rise .55s .07s ease-out both}.mobile-brand{display:none}
+		.login-card h2{font:700 31px/1.2 Manrope,sans-serif;letter-spacing:0;margin:0}.subhead{margin:9px 0 25px;color:var(--muted);font-size:14px;line-height:1.6}
+		.role-label,.input-label{display:block;margin-bottom:8px;font-size:12px;font-weight:700}
+		.role-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin-bottom:19px;background:#eef1ed;border:1px solid #e7ebe5;border-radius:4px}
+		.role-choice{min-height:38px;border:0;border-radius:3px;background:transparent;color:#65716b;font-size:13px;font-weight:600}.role-choice[aria-pressed="true"]{color:var(--green-dark);background:#fff;box-shadow:0 1px 4px #24312e12}
+		.login-field{margin-bottom:17px}.login-field input{width:100%;height:48px;padding:0 13px;border:1px solid #d9dfd8;border-radius:3px;background:#fff;color:#24312e;outline:none}.login-field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #176b561c}.login-field input::placeholder{color:#a0aaa5}
+		.password-box{position:relative}.password-box input{padding-right:66px}.password-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:6px;background:transparent;border:0;color:var(--green);font-size:12px;font-weight:700}
+		.login-error{min-height:18px;margin:-5px 0 8px;color:#ad4939;font-size:12px}
+		.primary{width:100%;height:48px;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:3px;background:var(--green);color:#fff;font-size:14px;font-weight:700;transition:background .15s,transform .15s}.primary:hover{background:var(--green-dark)}.primary:active{transform:translateY(1px)}.primary svg{width:17px;height:17px}
+		.prototype-note{margin:14px 0 0;color:var(--muted);font-size:11px;line-height:1.6}.login-help{margin:26px 0 0;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}.login-help a{color:var(--green);font-weight:700;text-decoration:none}
+
+		.app{display:none;min-height:100vh;background:#f4f5f1}.app-shell{min-height:100vh;display:grid;grid-template-columns:238px minmax(0,1fr)}
+		.sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:24px 16px 16px;background:#fff;border-right:1px solid var(--line)}.sidebar .brand{padding:0 8px 25px;color:#263430}.sidebar .brand-icon{background:var(--green);color:#fff}
+		.nav-caption{padding:14px 10px 8px;color:#909b95;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}.nav-list{display:grid;gap:4px}
+		.nav-item{width:100%;display:flex;align-items:center;gap:11px;padding:10px;border:0;border-radius:3px;background:transparent;color:#5d6a64;text-align:left;font-size:13px;font-weight:600}.nav-item svg{width:18px;height:18px;flex:none}.nav-item:hover{background:#f4f7f3}.nav-item[aria-current="page"]{background:var(--mint);color:var(--green-dark)}
+		.side-bottom{margin-top:auto}.demo-label{margin:12px 6px;padding:11px;border:1px solid #e5e9e2;border-radius:3px;background:#f8f9f6;color:#68756f;font-size:10px;line-height:1.5}.profile{display:flex;align-items:center;gap:10px;margin-top:14px;padding:13px 5px 2px;border-top:1px solid var(--line)}.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#d8e9dd;color:var(--green-dark);font-size:12px;font-weight:700}.profile-copy{min-width:0;flex:1}.profile-name{overflow:hidden;color:#263430;font-size:12px;font-weight:700;text-overflow:ellipsis;white-space:nowrap}.profile-role{margin-top:2px;color:var(--muted);font-size:10px}.logout{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:3px;background:transparent;color:#64716b}.logout:hover{background:#f3f5f2}.logout svg{width:17px;height:17px}
+		.main{min-width:0;padding:30px clamp(20px,4.5vw,64px) 46px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:31px}.crumb{color:#86918b;font-size:12px}.crumb strong{color:#34413c;font-weight:600}.today{color:#77837d;font-size:12px}.welcome-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:25px}.welcome-row h1{margin:0;font:700 27px/1.25 Manrope,sans-serif;letter-spacing:0}.welcome-row p{margin:7px 0 0;color:var(--muted);font-size:13px}.term-tag{padding:7px 10px;border:1px solid #dce3dc;border-radius:3px;color:#64716b;background:#fff;font-size:11px;white-space:nowrap}
+		.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:22px}.summary{min-height:122px;padding:17px 18px;background:#fff;border:1px solid #e5e9e3;border-radius:4px}.summary-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#697770;font-size:11px;font-weight:600}.metric-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:3px;background:#e8f3eb;color:var(--green)}.metric-icon.coral{background:#faeee9;color:#ba634e}.metric-icon.gold{background:#f6f0df;color:#9c7a2b}.metric-icon svg{width:17px;height:17px}.metric{display:flex;align-items:baseline;gap:6px;margin-top:13px;font:700 26px Manrope,sans-serif}.metric small{color:#78857f;font:500 11px "DM Sans",sans-serif}.metric-note{margin-top:4px;color:#89948e;font-size:10px}
+		.section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px}.section-head h2{margin:0;font:700 15px Manrope,sans-serif;letter-spacing:0}.section-head button,.subtle-link{border:0;background:transparent;color:var(--green);font-size:11px;font-weight:700;text-decoration:none}.section-head button:hover,.subtle-link:hover{text-decoration:underline}
+		.panel{overflow:hidden;background:#fff;border:1px solid #e5e9e3;border-radius:4px}.panel + .panel{margin-top:16px}.panel-pad{padding:17px 18px}
+		.attendance-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #edf0eb}.attendance-row:last-child{border-bottom:0;padding-bottom:0}.attendance-row:first-child{padding-top:0}.course-name{font-size:12px;font-weight:700}.course-meta{margin-top:4px;color:#87928c;font-size:10px}.course-attendance{display:flex;align-items:center;gap:10px}.percent{min-width:38px;text-align:right;font-size:12px;font-weight:700}.bar{width:106px;height:6px;overflow:hidden;border-radius:8px;background:#edf0eb}.bar span{height:100%;display:block;border-radius:inherit;background:#3c9976}.bar span.warn{background:#df9a59}
+		.table-wrap{width:100%;overflow-x:auto}.data-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.data-table th{padding:11px 15px;color:#87928c;background:#f8f9f6;font-size:10px;font-weight:700;letter-spacing:.3px}.data-table td{padding:13px 15px;border-top:1px solid #edf0eb;color:#43504a;font-size:11px}.data-table td:first-child{font-weight:600}.grade{display:inline-grid;min-width:30px;height:25px;place-items:center;padding:0 6px;border-radius:3px;background:#e7f2e9;color:var(--green-dark);font-size:10px;font-weight:700}
+		.page-view[hidden]{display:none}.section-intro{margin:-13px 0 19px;color:var(--muted);font-size:12px;line-height:1.6}.result-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:17px}.result-stat{padding:15px;background:#fff;border:1px solid #e5e9e3;border-radius:4px}.result-stat span{display:block;color:#7d8983;font-size:10px}.result-stat strong{display:block;margin-top:7px;font:700 20px Manrope,sans-serif}.result-stat em{color:#718078;font:500 10px "DM Sans",sans-serif;font-style:normal}
+		.teacher-quick{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;margin-bottom:18px;border:1px solid #dce9dd;border-radius:4px;background:#edf5ed}.teacher-quick strong{display:block;font-size:12px}.teacher-quick p{margin:4px 0 0;color:#68766d;font-size:10px}.teacher-quick button{flex:none;padding:9px 12px;border:0;border-radius:3px;background:var(--green);color:#fff;font-size:11px;font-weight:700}.teacher-quick button:hover{background:var(--green-dark)}
+		.mark-control{display:flex;align-items:center;gap:7px;color:#54625a;font-size:11px}.mark-control input{width:15px;height:15px;accent-color:var(--green)}.save-row{display:flex;justify-content:flex-end;gap:10px;padding:13px 15px;border-top:1px solid #edf0eb}.saved-note{align-self:center;margin-right:auto;color:var(--green-dark);font-size:11px}.save-button{padding:9px 12px;border:0;border-radius:3px;background:var(--green);color:#fff;font-size:11px;font-weight:700}
+		.mobile-top{display:none}
+		@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+		@media(max-width:900px){.login-page{grid-template-columns:.9fr 1.1fr}.login-area{padding:28px}.app-shell{grid-template-columns:205px minmax(0,1fr)}.main{padding:27px 24px 40px}.summary-grid{gap:9px}.summary{padding:14px}.bar{width:72px}}
+		@media(max-width:650px){.login-page{display:block;padding:0}.visual{display:none}.login-area{min-height:100vh;padding:25px 24px;border-radius:0}.login-card{max-width:420px}.mobile-brand{display:flex;margin-bottom:37px;color:#263430}.mobile-brand .brand-icon{background:var(--green);color:#fff}
+			.app-shell{display:block;padding-bottom:66px}.sidebar{position:fixed;z-index:5;top:auto;right:0;bottom:0;left:0;width:100%;height:62px;display:block;padding:5px 8px calc(5px + env(safe-area-inset-bottom));border-top:1px solid var(--line);border-right:0;background:#fff}.sidebar .brand,.nav-caption,.side-bottom{display:none}.nav-list{height:100%;grid-template-columns:repeat(3,1fr);gap:2px}.nav-item{height:100%;flex-direction:column;justify-content:center;gap:3px;padding:3px 2px;font-size:9px}.nav-item svg{width:18px;height:18px}
+			.main{padding:19px 16px 26px}.topbar{margin-bottom:24px}.mobile-top{display:flex;align-items:center;gap:8px;color:var(--green-dark);font:800 12px Manrope,sans-serif}.mobile-top .brand-icon{width:29px;height:29px;background:var(--green);color:#fff}.mobile-top .brand-icon svg{width:16px}.today{font-size:10px}.welcome-row{align-items:flex-start;margin-bottom:18px}.welcome-row h1{font-size:23px}.welcome-row p{max-width:240px;font-size:11px}.term-tag{font-size:9px;padding:6px 7px}.summary-grid{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:19px}.summary{min-height:107px;padding:12px}.summary:last-child{grid-column:1/-1;min-height:91px}.summary-head{font-size:10px}.metric-icon{width:27px;height:27px}.metric{font-size:23px;margin-top:9px}.metric-note{font-size:9px}.bar{width:72px}.panel-pad{padding:14px}.data-table th{padding:10px}.data-table td{padding:11px 10px}.result-stats{gap:7px}.result-stat{padding:11px}.result-stat strong{font-size:17px}.result-stat span{font-size:9px}.teacher-quick{align-items:flex-start}.teacher-quick button{font-size:10px}}
+		@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+	</style>
+</head>
+<body>
+	<main class="login-page" id="login-page">
+		<section class="visual" aria-label="Campus">
+			<a class="brand" href="#login" aria-label="Campus Desk">
+				<span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 19V9l6-4 6 4v10M9 12h6M9 15.5h6M12 5V3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+				<span>CAMPUS DESK</span>
+			</a>
+			<div class="visual-copy"><span class="kicker">One campus, one place</span><h1>Your campus life, in sync.</h1><p>Stay on top of attendance, semester grades, and internal assessments with one simple sign in.</p></div>
+			<div class="visual-foot"><span>Student &amp; Faculty Portal</span><span>Learning together</span></div>
+		</section>
+
+		<section class="login-area" id="login" aria-labelledby="login-title">
+			<div class="login-card">
+				<a class="brand mobile-brand" href="#login" aria-label="Campus Desk"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 19V9l6-4 6 4v10M9 12h6M9 15.5h6M12 5V3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CAMPUS DESK</span></a>
+				<h2 id="login-title">Welcome back</h2>
+				<p class="subhead">Sign in to continue to your campus account.</p>
+				<span class="role-label">I am signing in as</span>
+				<div class="role-switch" aria-label="Choose account type">
+					<button class="role-choice" type="button" data-role="Student" aria-pressed="true">Student</button>
+					<button class="role-choice" type="button" data-role="Teacher" aria-pressed="false">Teacher</button>
+				</div>
+				<form id="login-form" novalidate>
+					<div class="login-field"><label class="input-label" for="user-id">User ID</label><input id="user-id" name="userId" type="text" autocomplete="username" placeholder="Enter your student or staff ID" required></div>
+					<div class="login-field"><label class="input-label" for="password">Password</label><div class="password-box"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required><button class="password-toggle" id="password-toggle" type="button" aria-controls="password" aria-label="Show password">Show</button></div></div>
+					<p class="login-error" id="login-error" role="status" aria-live="polite"></p>
+					<button class="primary" type="submit"><span>Sign in</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+				</form>
+				<p class="prototype-note">Demo portal: enter any non-empty User ID and password. Sign-in is not connected to a real account system.</p>
+				<p class="login-help">Having trouble signing in? <a href="mailto:helpdesk@example.edu">Contact your campus help desk</a></p>
+			</div>
+		</section>
+	</main>
+
+	<div class="app" id="app" aria-label="Campus portal">
+		<div class="app-shell">
+			<aside class="sidebar">
+				<a class="brand" href="#dashboard" aria-label="Campus Desk"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 19V9l6-4 6 4v10M9 12h6M9 15.5h6M12 5V3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CAMPUS DESK</span></a>
+				<div class="nav-caption">Workspace</div>
+				<nav class="nav-list" aria-label="Portal sections">
+					<button class="nav-item" type="button" data-view="attendance" aria-current="page"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4m8-4v4M4 10h16m-11 4 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Attendance</span></button>
+					<button class="nav-item" type="button" data-view="semester" aria-current="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V9m7 11V4m7 16v-8M3 20.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Semester Results</span></button>
+					<button class="nav-item" type="button" data-view="cia" aria-current="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3.5V8h4M8.5 12h7m-7 3.5h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>CIA Results</span></button>
+				</nav>
+				<div class="side-bottom"><div class="demo-label">Sample portal data only. Connect your college system to use real student records.</div><div class="profile"><span class="avatar" id="avatar">ST</span><div class="profile-copy"><div class="profile-name" id="profile-name">Student</div><div class="profile-role" id="profile-role">Student account</div></div><button class="logout" id="logout" type="button" aria-label="Sign out"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4m5-4 4-3-4-3m4 3H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+			</aside>
+
+			<main class="main">
+				<div class="topbar"><div class="mobile-top"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 19V9l6-4 6 4v10M9 12h6M9 15.5h6M12 5V3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>CAMPUS DESK</div><div class="crumb">Portal <strong>/ <span id="crumb-current">Attendance</span></strong></div><div class="today" id="today"></div></div>
+
+				<section class="page-view" data-page="attendance">
+					<div class="welcome-row"><div><h1 id="welcome-title">Good morning</h1><p>Your academic overview at a glance.</p></div><span class="term-tag">Academic year 2025–26</span></div>
+					<div class="summary-grid">
+						<article class="summary"><div class="summary-head"><span>Overall attendance</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="metric">88<small>%</small></div><div class="metric-note">On track for the semester</div></article>
+						<article class="summary"><div class="summary-head"><span>Semester GPA</span><span class="metric-icon coral"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 14.5 9l6 .7-4.5 4.1 1.2 6-5.2-3-5.2 3 1.2-6-4.5-4.1 6-.7L12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div><div class="metric">8.4<small>/ 10</small></div><div class="metric-note">Latest published semester</div></article>
+						<article class="summary"><div class="summary-head"><span>Latest CIA average</span><span class="metric-icon gold"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9m7 10V5m7 14v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div><div class="metric">76<small>%</small></div><div class="metric-note">Across current subjects</div></article>
+					</div>
+					<div class="section-head"><h2>Attendance by subject</h2><button type="button" data-goto="attendance">View details</button></div>
+					<div class="panel panel-pad" id="attendance-panel"><div class="attendance-row"><div><div class="course-name">Data Structures</div><div class="course-meta">32 of 35 classes attended</div></div><div class="course-attendance"><div class="bar"><span style="width:91%"></span></div><span class="percent">91%</span></div></div><div class="attendance-row"><div><div class="course-name">Database Systems</div><div class="course-meta">28 of 33 classes attended</div></div><div class="course-attendance"><div class="bar"><span class="warn" style="width:85%"></span></div><span class="percent">85%</span></div></div><div class="attendance-row"><div><div class="course-name">Computer Networks</div><div class="course-meta">26 of 31 classes attended</div></div><div class="course-attendance"><div class="bar"><span class="warn" style="width:84%"></span></div><span class="percent">84%</span></div></div><div class="attendance-row"><div><div class="course-name">Operating Systems</div><div class="course-meta">30 of 32 classes attended</div></div><div class="course-attendance"><div class="bar"><span style="width:94%"></span></div><span class="percent">94%</span></div></div></div>
+					<div class="section-head" style="margin-top:22px"><h2>Recent CIA results</h2><button type="button" data-goto="cia">View all</button></div>
+					<div class="panel table-wrap"><table class="data-table"><thead><tr><th>Subject</th><th>Assessment</th><th>Score</th><th>Published</th></tr></thead><tbody><tr><td>Data Structures</td><td>CIA 2</td><td><span class="grade">42 / 50</span></td><td>Oct 02, 2025</td></tr><tr><td>Database Systems</td><td>CIA 2</td><td><span class="grade">38 / 50</span></td><td>Sep 29, 2025</td></tr><tr><td>Computer Networks</td><td>CIA 1</td><td><span class="grade">35 / 50</span></td><td>Sep 24, 2025</td></tr></tbody></table></div>
+				</section>
+
+				<section class="page-view" data-page="semester" hidden>
+					<div class="welcome-row"><div><h1>Semester results</h1><p>Published grades and academic performance.</p></div><span class="term-tag">Semester 4 · 2025–26</span></div>
+					<div class="result-stats"><div class="result-stat"><span>Semester GPA</span><strong>8.4 <em>/ 10</em></strong></div><div class="result-stat"><span>Credits earned</span><strong>22 <em>/ 22</em></strong></div><div class="result-stat"><span>Result status</span><strong>Pass</strong></div></div>
+					<div class="section-head"><h2>Semester 4 grade sheet</h2><span class="term-tag">Published Aug 18, 2025</span></div>
+					<div class="panel table-wrap"><table class="data-table"><thead><tr><th>Course</th><th>Course code</th><th>Credits</th><th>Grade</th><th>Grade points</th></tr></thead><tbody><tr><td>Data Structures</td><td>CS204</td><td>4</td><td><span class="grade">A</span></td><td>9</td></tr><tr><td>Database Systems</td><td>CS206</td><td>4</td><td><span class="grade">A</span></td><td>9</td></tr><tr><td>Computer Networks</td><td>CS208</td><td>4</td><td><span class="grade">B+</span></td><td>8</td></tr><tr><td>Operating Systems</td><td>CS210</td><td>4</td><td><span class="grade">A</span></td><td>9</td></tr><tr><td>Professional Communication</td><td>HS202</td><td>2</td><td><span class="grade">A+</span></td><td>10</td></tr><tr><td>Networks Lab</td><td>CS212</td><td>4</td><td><span class="grade">B+</span></td><td>8</td></tr></tbody></table></div>
+				</section>
+
+				<section class="page-view" data-page="cia" hidden>
+					<div class="welcome-row"><div><h1>CIA results</h1><p>Continuous internal assessment scores by subject.</p></div><span class="term-tag">Current semester</span></div>
+					<div class="result-stats"><div class="result-stat"><span>Current average</span><strong>76 <em>%</em></strong></div><div class="result-stat"><span>Assessments published</span><strong>8 <em>of 12</em></strong></div><div class="result-stat"><span>Next assessment</span><strong>Oct 21</strong></div></div>
+					<div class="section-head"><h2>Assessment breakdown</h2><span class="term-tag">Scores shown out of 50</span></div>
+					<div class="panel table-wrap"><table class="data-table"><thead><tr><th>Subject</th><th>CIA 1</th><th>CIA 2</th><th>Assignment</th><th>Average</th></tr></thead><tbody><tr><td>Data Structures</td><td>39 / 50</td><td><span class="grade">42 / 50</span></td><td>18 / 20</td><td>81%</td></tr><tr><td>Database Systems</td><td>35 / 50</td><td><span class="grade">38 / 50</span></td><td>17 / 20</td><td>74%</td></tr><tr><td>Computer Networks</td><td><span class="grade">40 / 50</span></td><td>Not published</td><td>16 / 20</td><td>80%</td></tr><tr><td>Operating Systems</td><td>34 / 50</td><td><span class="grade">37 / 50</span></td><td>18 / 20</td><td>73%</td></tr></tbody></table></div>
+				</section>
+
+				<section class="page-view" data-page="teacher-attendance" hidden>
+					<div class="welcome-row"><div><h1>Take attendance</h1><p>Mark today's class roster for your selected course.</p></div><span class="term-tag">Oct 09, 2025</span></div>
+					  <div class="teacher-quick"><div><strong>Data Structures · CS204</strong><p>Year 2 · Section A · 8 sample students shown</p></div><button id="select-all" type="button">Mark all present</button></div>
+					<div class="section-head"><h2>Class roster</h2><span class="term-tag">Present: <span id="present-count">0</span> / 8 shown</span></div>
+					<div class="panel table-wrap"><table class="data-table"><thead><tr><th>Student ID</th><th>Student name</th><th>Attendance</th></tr></thead><tbody id="roster"><tr><td>ST20416</td><td>Aarav Sharma</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20423</td><td>Maya Patel</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20431</td><td>Rohan Das</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20438</td><td>Anika Roy</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20444</td><td>Dev Shah</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20452</td><td>Isha Menon</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20459</td><td>Neil Thomas</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr><tr><td>ST20467</td><td>Sara Khan</td><td><label class="mark-control"><input type="checkbox" class="present-check"><span>Present</span></label></td></tr></tbody></table><div class="save-row"><span class="saved-note" id="saved-note" aria-live="polite"></span><button class="save-button" id="save-attendance" type="button">Save attendance</button></div></div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+	<script>
+		const loginPage = document.querySelector("#login-page");
+		const app = document.querySelector("#app");
+		const loginForm = document.querySelector("#login-form");
+		const userIdInput = document.querySelector("#user-id");
+		const passwordInput = document.querySelector("#password");
+		const loginError = document.querySelector("#login-error");
+		const passwordToggle = document.querySelector("#password-toggle");
+		const roleChoices = [...document.querySelectorAll(".role-choice")];
+		const navItems = [...document.querySelectorAll(".nav-item")];
+		let selectedRole = "Student";
+		let currentUserId = "";
+
+		roleChoices.forEach((choice) => choice.addEventListener("click", () => {
+			selectedRole = choice.dataset.role;
+			roleChoices.forEach((item) => item.setAttribute("aria-pressed", String(item === choice)));
+			loginError.textContent = "";
+		}));
+
+		passwordToggle.addEventListener("click", () => {
+			const reveal = passwordInput.type === "password";
+			passwordInput.type = reveal ? "text" : "password";
+			passwordToggle.textContent = reveal ? "Hide" : "Show";
+			passwordToggle.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+		});
+
+		function showView(view) {
+			document.querySelectorAll(".page-view").forEach((section) => {
+				section.hidden = section.dataset.page !== view;
+			});
+			navItems.forEach((item) => {
+				const active = item.dataset.view === view || (view === "teacher-attendance" && item.dataset.view === "attendance");
+				item.setAttribute("aria-current", String(active ? "page" : "false"));
+			});
+			const page = document.querySelector(`[data-page="${view}"]`);
+			const title = page.querySelector("h1").textContent;
+			document.querySelector("#crumb-current").textContent = title;
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+
+		loginForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			if (!userIdInput.value.trim() || !passwordInput.value.trim()) {
+				loginError.textContent = "Enter your User ID and password to continue.";
+				(!userIdInput.value.trim() ? userIdInput : passwordInput).focus();
+				return;
+			}
+			currentUserId = userIdInput.value.trim();
+			document.querySelector("#profile-name").textContent = currentUserId;
+			document.querySelector("#profile-role").textContent = `${selectedRole} account`;
+			document.querySelector("#avatar").textContent = currentUserId.slice(0, 2).toUpperCase();
+			document.querySelector("#welcome-title").textContent = `Welcome, ${currentUserId}`;
+			document.querySelector("#today").textContent = new Intl.DateTimeFormat("en", { weekday: "short", month: "short", day: "numeric", year: "numeric" }).format(new Date());
+			loginError.textContent = "";
+			loginPage.style.display = "none";
+			app.style.display = "block";
+			showView(selectedRole === "Teacher" ? "teacher-attendance" : "attendance");
+		});
+
+		navItems.forEach((item) => item.addEventListener("click", () => {
+			const destination = selectedRole === "Teacher" && item.dataset.view === "attendance" ? "teacher-attendance" : item.dataset.view;
+			showView(destination);
+		}));
+		document.querySelectorAll("[data-goto]").forEach((button) => button.addEventListener("click", () => showView(button.dataset.goto)));
+
+		const attendanceChecks = [...document.querySelectorAll(".present-check")];
+		function updatePresentCount() {
+			document.querySelector("#present-count").textContent = attendanceChecks.filter((check) => check.checked).length;
+		}
+		attendanceChecks.forEach((check) => check.addEventListener("change", updatePresentCount));
+		document.querySelector("#select-all").addEventListener("click", () => {
+			attendanceChecks.forEach((check) => { check.checked = true; });
+			updatePresentCount();
+			document.querySelector("#saved-note").textContent = "";
+		});
+		document.querySelector("#save-attendance").addEventListener("click", () => {
+			const count = attendanceChecks.filter((check) => check.checked).length;
+			document.querySelector("#saved-note").textContent = `Demo only: ${count} of ${attendanceChecks.length} shown marked present.`;
+		});
+		document.querySelector("#logout").addEventListener("click", () => {
+			app.style.display = "none";
+			loginPage.style.display = "grid";
+			loginForm.reset();
+			loginError.textContent = "";
+			passwordInput.type = "password";
+			passwordToggle.textContent = "Show";
+			passwordToggle.setAttribute("aria-label", "Show password");
+			userIdInput.focus();
+		});
+	</script>
+</body>
+</html>
